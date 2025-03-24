@@ -32,7 +32,7 @@
 #### basic:
 ```hcl
 module "hz-NAT" {
-  source        = "git::https://github.com/hamdiz0/terrafrom-aws-hz-nat.git"
+  source        = "hamdiz0/hz-nat/aws"
   instance_type = "t4g.micro"
   vpc_id        = aws_vpc.vpc.id
   map_subnet_rtbs = [
@@ -49,7 +49,7 @@ module "hz-NAT" {
 ##### also make sure not to specify a route table multiple times to avoid confilcts.
 ```hcl
 module "hz-NAT" {
-  source        = "git::https://github.com/hamdiz0/terrafrom-aws-hz-nat.git"
+  source        = "hamdiz0/hz-nat/aws"
   instance_type = "t4g.micro"
   vpc_id        = aws_vpc.vpc.id
   map_subnet_rtbs = [
@@ -66,4 +66,4 @@ module "hz-NAT" {
 }   
 ```
 
-### This module is pretty basic, do not hesitate to seggest inmprovments and contribute.
+### This module is pretty basic, do not hesitate to seggest improvments and contribute.
