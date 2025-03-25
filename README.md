@@ -16,23 +16,11 @@
 - `vpc_id`: The ID of the VPC to create the NAT instance in. (required)
 - `map_subnet_rtbs`: A list of pairs where the first element is a public subnet ID and the second element is a list of private route table IDs. (required)
 
-### Outputs:
-- `nat_instance_public_ips`: A list of NAT instance public IPs along with their availability zones.
-- `eni_rtb_pairs`: A list of pairs where each pair contains a private route table ID and its associated ENI ID.
-- `ami_id`: The ID of the AMI used for the NAT instance.
-- `instance_type`: The instance type of the NAT instance.
-- `eni_arns`: A list of ENI ARNs associated with the NAT instance.
-- `eni_ids`: A list of ENI IDs associated with the NAT instance.
-- `asg_arns`: A list of ARNs for the Auto Scaling Groups managing NAT instances.
-- `asg_ids`: A list of IDs for the Auto Scaling Groups managing NAT instances.
-- `NAT_security_group_id`: The security group ID assigned to the NAT instance.
-- `NAT_security_group_arn`: The security group ARN assigned to the NAT instance.
-
 ### Usage:
 #### basic:
 ```hcl
 module "hz-NAT" {
-  source        = "hamdiz0/hz-nat/aws"
+  source        = "hamdiz0/hz-nat-instance/aws"
   instance_type = "t4g.micro"
   vpc_id        = aws_vpc.vpc.id
   map_subnet_rtbs = [
@@ -49,7 +37,7 @@ module "hz-NAT" {
 ##### also make sure not to specify a route table multiple times to avoid confilcts.
 ```hcl
 module "hz-NAT" {
-  source        = "hamdiz0/hz-nat/aws"
+  source        = "hamdiz0/hz-nat-instance/aws"
   instance_type = "t4g.micro"
   vpc_id        = aws_vpc.vpc.id
   map_subnet_rtbs = [
@@ -65,5 +53,17 @@ module "hz-NAT" {
   ]
 }   
 ```
+
+### Outputs:
+- `nat_instance_public_ips`: A list of NAT instance public IPs along with their availability zones.
+- `eni_rtb_pairs`: A list of pairs where each pair contains a private route table ID and its associated ENI ID.
+- `ami_id`: The ID of the AMI used for the NAT instance.
+- `instance_type`: The instance type of the NAT instance.
+- `eni_arns`: A list of ENI ARNs associated with the NAT instance.
+- `eni_ids`: A list of ENI IDs associated with the NAT instance.
+- `asg_arns`: A list of ARNs for the Auto Scaling Groups managing NAT instances.
+- `asg_ids`: A list of IDs for the Auto Scaling Groups managing NAT instances.
+- `NAT_security_group_id`: The security group ID assigned to the NAT instance.
+- `NAT_security_group_arn`: The security group ARN assigned to the NAT instance.
 
 ### This module is pretty basic, do not hesitate to seggest improvments and contribute.
