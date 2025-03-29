@@ -42,7 +42,7 @@ module "hz-NAT" {
   vpc_id        = aws_vpc.vpc.id
   map_subnet_rtbs = [
     ([ # ( public subnet id , [private route tables ids] )
-      public-subnet-id-az1, [private_rtb_1_id-az1, private_rtb_2_az2]
+      public-subnet-id-az1, [private_rtb_1_id-az1, private_rtb_2_az1]
     ]),
     ([
       public-subnet-id-az2, [private_rtb_3_id-az2]
